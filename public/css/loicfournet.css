@@ -1,0 +1,410 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600&display=swap');
+
+body {
+  font-family: montserrat, sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 17px;
+}
+.clear {
+  clear: both;
+}
+
+.width-100 {
+  width: 100%;
+  height: auto;
+}
+
+/*Typo*/
+
+h1, h2, h3 {
+  text-transform: uppercase;
+}
+
+.head-title {
+  font-size: 15px;
+  text-transform: uppercase;
+}
+
+.white-link {
+  text-align: right;
+  text-transform: uppercase;
+  padding: 5px 5px 5px 5px;
+  border: 2px solid #fff;
+  font-weight: 400;
+  color: #fff;
+}
+
+.dark-link {
+  display: block;
+  float: left;
+  text-transform: uppercase;
+  padding: 5px 5px 5px 5px;
+  background: #000;
+  font-weight: 400;
+  color: #fff;
+}
+
+.white-link:hover {
+  text-decoration: none;
+  color: #fff;
+  border: 2px dashed #fff;
+}
+
+.dark-link:hover {
+  text-decoration: none;
+  color: #000;
+  background: #fff;
+  border: 2px dashed #000;
+}
+
+
+.head-title {
+  margin: 0px;
+  letter-spacing: 2px;
+}
+
+.title {
+  margin: 0px 0px 15px 0px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+
+.grey {
+  color: #888;
+}
+
+a:hover {
+  opacity: 0.85;
+}
+
+.question-title {
+  float: right;
+  font-size: 25px;
+  text-align: right;
+  max-width: 350px;
+}
+
+/*Social*/
+
+.social-container a {
+  display: block;
+  width: 60px;
+  height: 60px;
+  line-height: 50px;
+  color: #939598!important;
+  border: 5px solid #939598;
+  font-size: 20px!important;
+  border-radius: 40px;
+  text-decoration: none!important;
+}
+
+.social-container li {
+  display: inline-block;
+  margin: 50px 10px 0px 10px;
+}
+
+/*container*/
+
+.middel-container {
+  max-width: 938px;
+}
+
+.small-container {
+  max-width: 680px;
+  padding: 3rem 0rem 2rem 0rem;
+}
+
+.big-container {
+  max-width: 1024px;
+  padding: 3rem 0rem 2rem 0rem;
+}
+
+.orange-container {
+  background: #eb6b5f;
+  padding: 3rem 0rem 2rem 0rem;
+}
+
+.padding-row {
+  padding: 2rem 0rem 2rem 0rem;
+}
+
+/*-------------------HEADER------------------*/
+
+header {
+  height: 200px;
+}
+
+/*navigation*/
+
+/* The side navigation menu */
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 1s;
+}
+
+.sidenav ul {
+  padding-top: 35px;
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: #fff;
+  display: block;
+  transition: 0.3s
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover, .offcanvas a:focus{
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 80px;
+  margin-left: 50px;
+}
+
+#main {
+  transition: margin-left .5s;
+  overflow:hidden;
+  width:100%;
+}
+
+.topnav a {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  margin: 42px 30px 0px 0px;
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  border: 2px solid #000;
+}
+
+
+/*------------- Header ----------*/
+
+.brand {
+  display: block;
+  margin: 32px;
+  padding: 0px;
+}
+.brand ul {
+  padding: 0px;
+  margin: 0px;
+}
+
+.brand li {
+  display: block;
+  float: left;
+  color: #888;
+}
+
+.brand strong {
+  text-transform: uppercase;
+  color: #ed6a5b;
+}
+
+.baseline {
+  padding: 14px 0px 0px 15px;
+}
+
+/*---------------Footer---------------*/
+
+.footer-container {
+  padding: 0;
+  text-align: center;
+  color: #fff;
+}
+
+.footer-container a {
+  color: #fff;
+  text-decoration: underline
+}
+
+.footer-container p {
+  margin: 0;
+}
+
+
+.footer-motif {
+  width: 100%;
+  height: 350px;
+  background: url(../img/footer-motif.png) repeat-x bottom left;
+}
+
+/*---------------Bloge-------------*/
+
+.blog-post {
+  max-width: 520px;
+  margin: 0px 0px 45px 0px;
+}
+
+.blog-post img {
+  width: 100%;
+}
+
+.blog-post h3 {
+  margin: 15px 0px 15px 0px;
+}
+
+.next-blog-post {
+  color: #888;
+  padding: 5px;
+  border: 2px solid #888;
+  text-transform: uppercase;
+}
+
+.next-blog-post:hover {
+  color: #888;
+  text-decoration: none;
+  border: 2px dashed #888;
+}
+
+
+.post-pictures {
+  height: 400px;
+  owerflow: hidden;
+  margin-bottom: 50px;
+  line-height: 200px;
+}
+
+
+/*------------Forn Site------------*/
+
+.contact-form {
+  width: 100%;
+}
+
+.collapse-comment {
+  margin-top: 55px;
+}
+
+.container-post-comment, {
+  width: 94%;
+  padding: 15px 3% 0px; 3%;
+}
+
+.form-site input   {
+  color:#888;
+  width: 100%;
+  margin-top: 15px;
+  padding: 15px;
+  border-top: 0px;
+  border-right: 0px;
+  border-left: 0px;
+  border-bottom: 1px solid #888;
+}
+
+.form-site textarea {
+  color:#888;
+  width: 100%;
+  margin-top: 15px;
+  padding: 15px 15px 0px 15px;
+  border-top: 0px;
+  border-right: 0px;
+  border-left: 0px;
+  border-bottom: 1px solid #888;
+}
+
+.form-site input:focus {
+  border-bottom: 1px solid #ed6a5b;
+}
+
+.form-site textarea:focus {
+  border-bottom: 1px solid #ed6a5b;
+}
+
+.valid-form-site {
+  width: 100%;
+  text-align:center;
+  text-transform: uppercase;
+  margin: 55px 0px 35px 0px;
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border: 2px solid #fff;
+}
+
+
+.valid-form-site:hover {
+  background: #fff;
+  color: #000;
+  border: 2px dashed #000;
+}
+
+.comment-list {
+  padding: 50px 0px 50px 0px;
+}
+
+.comment {
+  font-size: 15px;
+  color: #888;
+}
+
+
+
+/*--------------Responsive-----------*/
+
+@media screen and (min-width: 740px){
+  .communication-link span {
+    display:block;
+    line-height: 25px !important;
+    padding-top: 15px!important;
+  }
+
+  .question-title-responsive {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .services-container a {
+      margin: 10px 0px 10px 0px;
+  }
+  .home-visual {
+    margin-top: 40px;
+  }
+  .question-title-display {
+    display: none;
+  }
+  .question-title-responsive {
+    display: block!important;
+    float: left!important;
+    margin-left: 15px;
+    text-align: left!important;
+  }
+  .brand {
+    margin: 32px 0px 0px 0px!important;
+  }
+}
+
+
+
+
+
+
+
+
+
