@@ -1,3 +1,7 @@
+<?php
+require 'Database.php';
+require 'Article.php';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -12,7 +16,7 @@
     <title>Loic Fournet - Blog design et développemet</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../public/css/bootstrap.css" rel="stylesheet">
+    <link href="public/css/bootstrap.css" rel="stylesheet">
 
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -20,7 +24,7 @@
     <link rel="stylesheet" href="https://use.typekit.net/gqr7yue.css">
 
     <!-- Custom styles for this template -->
-    <link href="../public/css/loicfournet.css" rel="stylesheet">
+    <link href="public/css/loicfournet.css" rel="stylesheet">
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -53,47 +57,29 @@
     <div class="container-fluid">
         <header>
             <ul class="brand">
-                <li><a href="#"><img src="../public/img/logo-site.png" alt="Loïc Fournet"/></a></li>
+                <li><a href="#"><img src="public/img/logo-site.png" alt="Loïc Fournet"/></a></li>
                 <li class="baseline"><strong>Blog de Loïc Fournet</strong><br/>Design & Développement</li>
             </ul>
         </header>
     </div>
     <div class="container middel-container">
         <div class="row">
-            <article class="col blog-post">
-                <img src="../public/img/image-blogue.png"  alt="image-blogue"/>
-                <h3>Titre article</h3>
-                <p>
-                    Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                </p>
-                <a class="next-blog-post" href="#">Lire la suite</a>
-            </article>
-            <article class="col blog-post">
-                <img src="../public/img/image-blogue.png"  alt="image-blogue"/>
-                <h3>Titre article</h3>
-                <p>
-                    Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                </p>
-                <a class="next-blog-post" href="#">Lire la suite</a>
-            </article>
-        </div>
-        <div class="row">
-            <article class="col blog-post">
-                <img src="../public/img/image-blogue.png" alt="image-blogue"/>
-                <h3>Titre article</h3>
-                <p>
-                    Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                </p>
-                <a class="next-blog-post"" href="#">Lire la suite</a>
-            </article>
-            <article class="col blog-post">
-                <img src="../public/img/image-blogue.png"  alt="image-blogue"/>
-                <h3>Titre article</h3>
-                <p>
-                    Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                </p>
-                <a class="next-blog-post" href="#">Lire la suite</a>
-            </article>
+            <?php
+                $article = new Article();
+                $articles = $article->getArticles();
+                while($article = $articles->fetch())
+                {
+                    ?>
+                        <article class="col blog-post">
+                                <img src="public/img/image-blogue.png" alt="image-blogue"/>
+                                <h3><?= htmlspecialchars($article->title);?></h3>
+                                <p><?= htmlspecialchars($article->first_text);?></p>
+                                <a class="next-blog-post" href="single.php?articleId=<?= htmlspecialchars($article->id);?>">Lire la suite</a>
+                        </article>
+                    <?php
+                }
+                $articles->closeCursor();
+            ?>
         </div>
     </div>
     <div class="container-fluid footer-container">

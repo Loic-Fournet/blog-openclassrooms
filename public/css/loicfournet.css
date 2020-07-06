@@ -253,11 +253,12 @@ header {
   background: url(../img/footer-motif.png) repeat-x bottom left;
 }
 
-/*---------------Bloge-------------*/
+/*---------------Blog-------------*/
 
 .blog-post {
-  max-width: 520px;
   margin: 0px 0px 45px 0px;
+  min-width: 50%;
+  max-width: 50%;
 }
 
 .blog-post img {
@@ -355,7 +356,7 @@ header {
 }
 
 .comment-list {
-  padding: 50px 0px 50px 0px;
+  margin: 50px 0px 50px 0px;
 }
 
 .comment {
