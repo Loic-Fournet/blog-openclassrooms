@@ -1,16 +1,9 @@
 <?php
-
-require 'Database.php';
-
-require 'Article.php';
-
-require 'Comment.php';
+require '../vendor/autoload.php';
+use Blog\src\DAO\PostDAO;
+use Blog\src\DAO\CommentDAO;
 ?>
-<?php
-$article = new Article();
-$articles = $article->getArticle($_GET['articleId']);
-$article = $articles->fetch()
-?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -22,10 +15,16 @@ $article = $articles->fetch()
   <meta name="author" content="">
   <link rel="icon" href="favicon.ico">
 
-  <title>Loic Fournet -  <?= htmlspecialchars($article->Title);?></title>
+    <?php
+    $post = new PostDAO();
+    $posts = $post->getPosts($_GET['postId']);
+    $post = $posts->fetch()
+    ?>
+
+  <title>Loic Fournet -  <?= htmlspecialchars($post->title);?></title>
 
   <!-- Bootstrap core CSS -->
-  <link href="public/css/bootstrap.css" rel="stylesheet">
+  <link href="../public/css/bootstrap.css" rel="stylesheet">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
@@ -33,7 +32,7 @@ $article = $articles->fetch()
 
 
   <!-- Custom styles for this template -->
-  <link href="public/css/loicfournet.css" rel="stylesheet">
+  <link href="../public/css/loicfournet.css" rel="stylesheet">
 
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -44,7 +43,7 @@ $article = $articles->fetch()
   <nav>
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <ul>
-      <li><a href="home.php">Accueil</a></li>
+      <li><a href="blog.php">Accueil</a></li>
         <li><a href="#">Parcours</a></li>
       <li><a href="#">Contact</a></li>
     </ul>
@@ -62,21 +61,20 @@ $article = $articles->fetch()
 <div id="main">
   <div class="container-fluid">
     <header class="header-post">
-      <a href="#" class="brand"><img src="public/img/logo-site.png" arial-role="image" alt="Loïc Fournet"/></a>
+      <a href="#" class="brand"><img src="../public/img/logo-site.png" arial-role="image" alt="Loïc Fournet"/></a>
     </header>
   </div>
-  <div class="container post-pictures" style="background-image: url(public/img/image-blogue.png)"/>
-
+  <div class="container post-pictures" style="background-image: url(../public/img/image-blogue.png)"/>
   </div>
   <div class="container middel-container">
     <div class="row">
        <article class="col">
-           <p>dans <i> <?= htmlspecialchars($article->category);?></i> par <?= htmlspecialchars($article->author);?>  le <?= htmlspecialchars($article->date_post);?></i></p>
-           <h2> <?= htmlspecialchars($article->title);?></h2>
-           <p><?= htmlspecialchars($article->first_text);?> <p>
-           <p><?= htmlspecialchars($article->content);?> <p>
+           <p>dans <i> <?= htmlspecialchars($post->category);?></i> par <?= htmlspecialchars($post->author);?>  le <?= htmlspecialchars($post->date_post);?></i></p>
+           <h2> <?= htmlspecialchars($post->title);?></h2>
+           <p><?= htmlspecialchars($post->first_text);?> <p>
+           <p><?= htmlspecialchars($post->content);?> <p>
            <?php
-            $articles->closeCursor();
+            $posts->closeCursor();
            ?>
        </article>
     </div>
@@ -103,8 +101,8 @@ $article = $articles->fetch()
           <div class="col comment-list">
               <h4 class="head-title">Derniers commentaires</h4>
               <?php
-                  $comment = new Comment();
-                  $comments = $comment->getCommentsFromArticle($_GET['articleId']);
+                  $comment = new CommentDAO();
+                  $comments = $comment->getCommentsFromPost($_GET['postId']);
                   while($comment = $comments->fetch())
                   {
                       ?>
@@ -140,7 +138,7 @@ $article = $articles->fetch()
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>
-<script src="public/js/bootstrap.js"></script>
+<script src="../public/js/bootstrap.js"></script>
 <script>
   function openNav() {
     document.getElementById("sideNavigation").style.width = "350px";
