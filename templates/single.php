@@ -1,7 +1,6 @@
 <?php
-require '../vendor/autoload.php';
-use Blog\src\DAO\PostDAO;
-use Blog\src\DAO\CommentDAO;
+    use Blog\src\DAO\PostDAO;
+    use Blog\src\DAO\CommentDAO;
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +42,7 @@ use Blog\src\DAO\CommentDAO;
   <nav>
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <ul>
-      <li><a href="blog.php">Accueil</a></li>
+      <li><a href="../public/index.php">Accueil</a></li>
         <li><a href="#">Parcours</a></li>
       <li><a href="#">Contact</a></li>
     </ul>
@@ -101,8 +100,6 @@ use Blog\src\DAO\CommentDAO;
           <div class="col comment-list">
               <h4 class="head-title">Derniers commentaires</h4>
               <?php
-                  $comment = new CommentDAO();
-                  $comments = $comment->getCommentsFromPost($_GET['postId']);
                   while($comment = $comments->fetch())
                   {
                       ?>
@@ -149,6 +146,5 @@ use Blog\src\DAO\CommentDAO;
     document.getElementById("main").style.marginLeft = "0";
   }
 </script>
-
 </body>
 </html>

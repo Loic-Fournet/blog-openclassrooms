@@ -1,7 +1,3 @@
-<?php
-require '../vendor/autoload.php';
-use Blog\src\DAO\PostDAO;
-?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -13,9 +9,8 @@ use Blog\src\DAO\PostDAO;
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>Loic Fournet - Blog design et développemet</title>
+    <title>Loic Fournet - Blog design et developpement</title>
 
-    <!-- Bootstrap core CSS -->
     <link href="../public/css/bootstrap.css" rel="stylesheet">
 
 
@@ -65,8 +60,6 @@ use Blog\src\DAO\PostDAO;
     <div class="container middel-container">
         <div class="row">
             <?php
-                $post = new PostDAO();
-                $posts = $post->getPosts();
                 while($post = $posts->fetch())
                 {
                     ?>
@@ -74,7 +67,7 @@ use Blog\src\DAO\PostDAO;
                                 <img src="../public/img/image-blogue.png" alt="image-blogue"/>
                                 <h3><?= htmlspecialchars($post->title);?></h3>
                                 <p><?= htmlspecialchars($post->first_text);?></p>
-                                <a class="next-blog-post" href="single.php?postId=<?= htmlspecialchars($post->id);?>">Lire la suite</a>
+                                <a class="next-blog-post" href="../public/index.php?route=post&postId=<?= htmlspecialchars($post->id);?>">Lire la suite</a>
                         </article>
                     <?php
                 }

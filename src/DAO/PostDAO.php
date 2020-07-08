@@ -1,7 +1,7 @@
 <?php
     namespace Blog\src\DAO;
 
-    class PostDAO extends Database
+    class PostDAO extends DAO
     {
         public function getPosts()
         {
