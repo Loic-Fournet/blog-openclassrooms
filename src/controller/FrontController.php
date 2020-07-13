@@ -1,29 +1,38 @@
 <?php
+
 namespace Blog\src\controller;
 use Blog\src\DAO\PostDAO;
 use Blog\src\DAO\CommentDAO;
+use Blog\src\model\View;
 
 class FrontController
 {
     private $postDAO;
     private $commentDAO;
+    private $view;
 
     public function __construct()
     {
         $this->postDAO = new PostDAO();
         $this->commentDAO = new CommentDAO();
+        $this->view = new View();
     }
 
-    public function blog()
+    public function Blog()
     {
         $posts = $this->postDAO->getPosts();
-        require '../templates/blog.php';
+        return $this->view->render('blog', [
+            'posts' => $posts
+        ]);
     }
 
     public function post($postId)
     {
         $post = $this->postDAO->getPost($postId);
         $comments = $this->commentDAO->getCommentsFromPost($postId);
-        require '../templates/single.php';
+        return $this->view->render('single', [
+            'post' => $post,
+            'comments' => $comments
+        ]);
     }
 }
