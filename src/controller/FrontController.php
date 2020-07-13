@@ -1,5 +1,4 @@
 <?php
-
 namespace Blog\src\controller;
 use Blog\src\DAO\PostDAO;
 use Blog\src\DAO\CommentDAO;
@@ -23,7 +22,7 @@ class FrontController
 
     public function post($postId)
     {
-        $posts = $this->postDAO->getPost($postId);
+        $post = $this->postDAO->getPost($postId);
         $comments = $this->commentDAO->getCommentsFromPost($postId);
         require '../templates/single.php';
     }

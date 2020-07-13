@@ -2,36 +2,39 @@
 
 namespace Blog\config;
 use Blog\src\controller\FrontController;
+use Blog\src\controller\ErrorController;
 use Exception;
 
 class Router
 {
     private $frontController;
+    private $errorController;
 
     public function __construct()
     {
         $this->frontController = new FrontController();
+        $this->errorController = new ErrorController();
     }
 
     public function run()
     {
-        try{
+        try {
             if(isset($_GET['route']))
             {
                 if($_GET['route'] === 'post'){
                     $this->frontController->post($_GET['postId']);
                 }
-                else{
-                    echo 'page inconnue';
+                else {
+                    $this->errorController->errorNotFound();
                 }
             }
-            else{
+            else {
                 $this->frontController->blog();
             }
         }
         catch (Exception $e)
         {
-            echo 'Erreur';
+            $this->errorController->errorServer();
         }
     }
 }

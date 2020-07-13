@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>Loic Fournet - Blog design et developpement</title>
+    <title>Loïc Fournet - Blog design et développement</title>
 
     <link href="../public/css/bootstrap.css" rel="stylesheet">
 
@@ -20,7 +20,6 @@
 
     <!-- Custom styles for this template -->
     <link href="../public/css/loicfournet.css" rel="stylesheet">
-
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -60,18 +59,17 @@
     <div class="container middel-container">
         <div class="row">
             <?php
-                while($post = $posts->fetch())
+                foreach ($posts as $post)
                 {
                     ?>
-                        <article class="col blog-post">
-                                <img src="../public/img/image-blogue.png" alt="image-blogue"/>
-                                <h3><?= htmlspecialchars($post->title);?></h3>
-                                <p><?= htmlspecialchars($post->first_text);?></p>
-                                <a class="next-blog-post" href="../public/index.php?route=post&postId=<?= htmlspecialchars($post->id);?>">Lire la suite</a>
-                        </article>
+                    <article class="col blog-post">
+                        <img src="../public/img/image-blogue.png" alt="image-blogue"/>
+                        <h3><?= htmlspecialchars($post->getTitle());?></h3>
+                        <p><?= htmlspecialchars($post->getFirstText());?></p>
+                        <a class="next-blog-post" href="../public/index.php?route=post&postId=<?= htmlspecialchars($post->getid());?>">Lire la suite</a>
+                    </article>
                     <?php
                 }
-                $posts->closeCursor();
             ?>
         </div>
     </div>

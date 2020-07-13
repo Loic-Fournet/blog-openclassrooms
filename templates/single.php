@@ -1,8 +1,3 @@
-<?php
-    use Blog\src\DAO\PostDAO;
-    use Blog\src\DAO\CommentDAO;
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -14,13 +9,7 @@
   <meta name="author" content="">
   <link rel="icon" href="favicon.ico">
 
-    <?php
-    $post = new PostDAO();
-    $posts = $post->getPosts($_GET['postId']);
-    $post = $posts->fetch()
-    ?>
-
-  <title>Loic Fournet -  <?= htmlspecialchars($post->title);?></title>
+  <title>Loic Fournet -  <?= htmlspecialchars($post->getTitle());?></title>
 
   <!-- Bootstrap core CSS -->
   <link href="../public/css/bootstrap.css" rel="stylesheet">
@@ -68,13 +57,10 @@
   <div class="container middel-container">
     <div class="row">
        <article class="col">
-           <p>dans <i> <?= htmlspecialchars($post->category);?></i> par <?= htmlspecialchars($post->author);?>  le <?= htmlspecialchars($post->date_post);?></i></p>
-           <h2> <?= htmlspecialchars($post->title);?></h2>
-           <p><?= htmlspecialchars($post->first_text);?> <p>
-           <p><?= htmlspecialchars($post->content);?> <p>
-           <?php
-            $posts->closeCursor();
-           ?>
+           <p>dans <i> <?= htmlspecialchars($post->getCategory());?></i> par <?= htmlspecialchars($post->getAuthor());?>  le <?= htmlspecialchars($post->getDatePost());?></i></p>
+           <h2> <?= htmlspecialchars($post->getTitle());?></h2>
+           <p><?= htmlspecialchars($post->getFirstText());?><p>
+           <p><?= htmlspecialchars($post->getContent());?><p>
        </article>
     </div>
     <div class="row">
@@ -100,16 +86,15 @@
           <div class="col comment-list">
               <h4 class="head-title">Derniers commentaires</h4>
               <?php
-                  while($comment = $comments->fetch())
+                  foreach($comment as $comment)
                   {
                       ?>
                       <article class="comment">
-                          </p>Par <strong><?= htmlspecialchars($comment->author);?></strong> le <i><?= htmlspecialchars($comment->date_comment);?></i></p>
-                          <p><?= htmlspecialchars($comment->content);?></p>
+                          </p>Par <strong><?= htmlspecialchars($comment->getAuthor());?></strong> le <i><?= htmlspecialchars($comment->getDateComment());?></i></p>
+                          <p><?= htmlspecialchars($comment->getContent());?></p>
                       </article>
                       <?php
                   }
-                  $comments->closeCursor();
               ?>
           </div>
       </div>
