@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>Loïc Fournet - Blog design et développement</title>
+    <title><?=$title?></title>
 
     <link href="../public/css/bootstrap.css" rel="stylesheet">
 

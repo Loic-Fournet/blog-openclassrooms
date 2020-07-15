@@ -1,37 +1,37 @@
 <?php
 
 namespace Blog\src\controller;
-use Blog\src\DAO\PostDAO;
+use Blog\src\DAO\ArticleDAO;
 use Blog\src\DAO\CommentDAO;
 use Blog\src\model\View;
 
 class FrontController
 {
-    private $postDAO;
+    private $articleDAO;
     private $commentDAO;
     private $view;
 
     public function __construct()
     {
-        $this->postDAO = new PostDAO();
+        $this->articleDAO = new ArticleDAO();
         $this->commentDAO = new CommentDAO();
         $this->view = new View();
     }
 
-    public function Blog()
+    public function blog()
     {
-        $posts = $this->postDAO->getPosts();
+        $articles = $this->articleDAO->getArticles();
         return $this->view->render('blog', [
-            'posts' => $posts
+            'articles' => $articles
         ]);
     }
 
-    public function post($postId)
+    public function article($articleId)
     {
-        $post = $this->postDAO->getPost($postId);
-        $comments = $this->commentDAO->getCommentsFromPost($postId);
+        $article = $this->articleDAO->getArticle($articleId);
+        $comments = $this->commentDAO->getCommentsFromArticle($articleId);
         return $this->view->render('single', [
-            'post' => $post,
+            'article' => $article,
             'comments' => $comments
         ]);
     }

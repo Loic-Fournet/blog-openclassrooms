@@ -2,7 +2,7 @@
 
 namespace Blog\src\model;
 
-class Post
+class Article
 
 {
     private $id;
@@ -10,7 +10,7 @@ class Post
     private $firstText;
     private $content;
     private $author;
-    private $datePost;
+    private $dateArticle;
     private $picture;
     private $category;
 
@@ -71,13 +71,13 @@ class Post
 
 
 
-    public function getDatePost()
+    public function getDateArticle()
     {
-        return $this->datePost;
+        return $this->dateArticle;
     }
-    public function setDatePost($datePost)
+    public function setDateArticle($dateArticle)
     {
-        $this->datePost = $datePost;
+        $this->dateArticle = $dateArticle;
     }
 
 

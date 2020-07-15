@@ -4,10 +4,10 @@
   <div class="container middel-container">
     <div class="row">
        <article class="col">
-           <p>dans <i> <?= htmlspecialchars($post->getCategory());?></i> par <?= htmlspecialchars($post->getAuthor());?>  le <?= htmlspecialchars($post->getDatePost());?></i></p>
-           <h2> <?= htmlspecialchars($post->getTitle());?></h2>
-           <p><?= htmlspecialchars($post->getFirstText());?><p>
-           <p><?= htmlspecialchars($post->getContent());?><p>
+           <p>dans <i> <?= htmlspecialchars($article->getCategory());?></i> par <?= htmlspecialchars($article->getAuthor());?>  le <?= htmlspecialchars($article->getDateArticle());?></i></p>
+           <h2> <?= htmlspecialchars($article->getTitle());?></h2>
+           <p><?= htmlspecialchars($article->getFirstText());?><p>
+           <p><?= htmlspecialchars($article->getContent());?><p>
        </article>
     </div>
     <div class="row">
