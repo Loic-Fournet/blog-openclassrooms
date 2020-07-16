@@ -19,7 +19,7 @@
         <div class="collapse collapse-comment" id="collapseComment">
           <div class="card card-body container-post-comment">
             <p>Vous pouvez écrire un commentaire en remplissant les champs suivant.<br/> Votre courriel ne sera pas publié.</p>
-            <form class="form-site" name="" method="post" action="index.php" role="form">
+            <form class="form-site" name="" method="post" action="single.php" role="form">
               <input type="text" class="input" name="name-oost-comment"  placeholder="Nom" required>
               <input type="text" class="input" name="email-post-comment"  placeholder="Courriel" required>
               <textarea class="input" name="message-post-comment"  placeholder="Message" required></textarea>
@@ -33,11 +33,11 @@
           <div class="col comment-list">
               <h4 class="head-title">Derniers commentaires</h4>
               <?php
-                  foreach($comment as $comment)
+                  foreach($comments as $comment)
                   {
                       ?>
                       <article class="comment">
-                          </p>Par <strong><?= htmlspecialchars($comment->getAuthor());?></strong> le <i><?= htmlspecialchars($comment->getDateComment());?></i></p>
+                          <p>Par <strong><?= htmlspecialchars($comment->getAuthor());?></strong> le <i><?= htmlspecialchars($comment->getDateComment());?></i></p>
                           <p><?= htmlspecialchars($comment->getContent());?></p>
                       </article>
                       <?php

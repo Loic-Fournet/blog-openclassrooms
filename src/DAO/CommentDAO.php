@@ -8,6 +8,9 @@ class CommentDAO extends DAO
     {
         $comment = new Comment();
         $comment->setId($row['id']);
+        $comment->setAuthor($row['author']);
+        $comment->setContent($row['content']);
+        $comment->setDateComment($row['date_comment']);
         return $comment;
     }
 

@@ -1,6 +1,12 @@
 
     <div class="container middel-container">
         <div class="row">
+            <div class="col">
+                <a href="../public/index.php?route=addArticle">Nouvel article</a><br/><br/>
+            </div>
+        </div>
+        <div class="row">
+            <?= $this->session->show('add_article'); ?>
             <?php
                 foreach ($articles as $article)
                 {

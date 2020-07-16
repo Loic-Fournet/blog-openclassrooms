@@ -1,6 +1,7 @@
 <?php
 namespace Blog\src\DAO;
 use Blog\src\model\Article;
+use Blog\config\Parameter;
 
 class ArticleDAO extends DAO
 {
@@ -12,9 +13,9 @@ class ArticleDAO extends DAO
         $article->setFirstText($row['first_text']);
         $article->setContent($row['content']);
         $article->setAuthor($row['author']);
-        $article->setDateArticle($row['date_article']);
         $article->setPicture($row['picture']);
         $article->setCategory($row['category']);
+        $article->setDateArticle($row['date_article']);
         return $article;
     }
 
@@ -34,10 +35,16 @@ class ArticleDAO extends DAO
 
     public function getArticle($articleId)
     {
-        $sql = 'SELECT id , title , first_text , content , author , date_article , picture , category  FROM article WHERE id = ?';
+        $sql = 'SELECT id , title , first_text , content , author  , picture , category , date_article  FROM article WHERE id = ?';
         $result = $this->createQuery($sql, [$articleId]);
         $article = $result->fetch();
         $result->closeCursor();
         return $this->buildObject($article);
+    }
+
+    public function addArticle(Parameter $post)
+    {
+        $sql = 'INSERT INTO article (id , title , first_text , content , author , picture , category, date_article) VALUES (?, ?, ?, ?, ?, ?,? , NOW())';
+        $this->createQuery($sql, [$post->get('title'),$post->get('first_text'), $post->get('content'),$post->get('author'),$post->get('picture'), $post->get('category')]);
     }
 }

@@ -2,23 +2,15 @@
 
 namespace Blog\src\controller;
 
-use Blog\src\DAO\ArticleDAO;
-use Blog\src\model\View;
+use Blog\config\Parameter;
 
-class BackController
+class BackController extends Controller
 {
-    private $view;
-
-    public function __construct()
+    public function addArticle(Parameter $post)
     {
-        $this->view = new View();
-    }
-
-    public function addArticle($post)
-    {
-        if(isset($post['submit'])) {
-            $articleDAO = new ArticleDAO();
-            $articleDAO->addArticle($post);
+        if($post->get('submit')) {
+            $this->articleDAO->addArticle($post);
+            $this->session->set('add_article', 'Le nouvel article a bien été ajouté');
             header('Location: ../public/index.php');
         }
         return $this->view->render('add_article', [

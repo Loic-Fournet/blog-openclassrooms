@@ -8,12 +8,16 @@ use Exception;
 
 class Router
 {
+    //Member data attributes
     private $frontController;
     private $backController;
     private $errorController;
+    private $request;
 
+    //call methods whith controller class
     public function __construct()
     {
+        $this->request = new Request();
         $this->frontController = new FrontController();
         $this->backController = new BackController();
         $this->errorController = new ErrorController();
@@ -21,26 +25,29 @@ class Router
 
     public function run()
     {
-        try{
-            if(isset($_GET['route']))
+        $route = $this->request->getGet()->get('route');
+        try {
+                if(isset($route))
+                {
+                    $this->request->getSession()->set('test', 'Pine d\'huitre');
+                    var_dump($this->request->getSession()->get('test'));
+                    if($route === 'article'){
+                        $this->frontController->article($this->request->getGet()->get('articleId'));
+                    }
+                    elseif($_GET[$route] === 'addArticle'){
+                        $this->backController->addArticle($this->request->getPost());
+                    }
+                    else{
+                        $this->errorController->errorNotFound();
+                    }
+                }
+                else {;
+                    $this->frontController->blog();
+                }
+            }
+            catch (Exception $e)
             {
-                if($_GET['route'] === 'article'){
-                    $this->frontController->article($_GET['articleId']);
-                }
-                elseif($_GET['route'] === 'addArticle'){
-                    $this->backController->addArticle($_POST);
-                }
-                else{
-                    $this->errorController->errorNotFound();
-                }
+                $this->errorController->errorServer();
             }
-            else{
-                $this->frontController->blog();
-            }
-        }
-        catch (Exception $e)
-        {
-            $this->errorController->errorServer();
-        }
     }
 }

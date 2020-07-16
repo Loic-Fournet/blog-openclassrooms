@@ -1,23 +1,9 @@
 <?php
 
 namespace Blog\src\controller;
-use Blog\src\DAO\ArticleDAO;
-use Blog\src\DAO\CommentDAO;
-use Blog\src\model\View;
 
-class FrontController
+class FrontController extends controller
 {
-    private $articleDAO;
-    private $commentDAO;
-    private $view;
-
-    public function __construct()
-    {
-        $this->articleDAO = new ArticleDAO();
-        $this->commentDAO = new CommentDAO();
-        $this->view = new View();
-    }
-
     public function blog()
     {
         $articles = $this->articleDAO->getArticles();
